@@ -3,42 +3,34 @@
 using namespace std;
 
     struct Node{
-        int val[3];
+        int val;
         char tst;
         struct Node *next;
-        Node(int _val[3]) : next(nullptr) {
-            for(int i = 0; i < 3; i++){
-                val[i] = _val[i];
-            }
-        };
-        /*
-            Explica��o da linha acima:
-                � um construtor de Node em que,
-                � obrigat�rio receber um valor no 'int _val'
-                E em seguida ele permite receber os seguintes par�metros:
-                    val  (Que vai ter como valor padr�o '_val')
-                    next  (Que vai ter como valor padr�o 'nullptr', ou seja, ponteiro null)
-        */
+        Node(int _val) : val(_val), next(nullptr) {};
     };
 
 int main() {
-    int l1[3] = {2, 4, 3};
-    int l1[3] = {5, 6, 4};
-    Node node1(l1);
-    Node node2(l2);
+    Node l1_node1(2);
+    Node l1_node2(4);
+    Node l1_node3(3);
 
-//    Node node2(7);
-//    Node node3(7);
+    l1_node1.next = &l1_node2;
+    l1_node2.next = &l1_node3;
 
-//    node1.next = &node2;
-//    cout << node1.next->val;
+    Node l2_node1(5);
+    Node l2_node2(6);
+    Node l2_node3(4);
 
-    for(int i = 0; i < 3; i++){
-            cout << node1.val[i];
+    l2_node1.next = &l2_node2;
+    l2_node2.next = &l2_node3;
+
+//    cout << l2_node1.next->next->val;
+
+    Node *current = &l1_node1;
+    while(current != nullptr){
+        cout << current->val;
+        current = current->next;
     }
-
-
-
 
 //    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
 //
